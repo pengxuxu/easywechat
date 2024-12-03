@@ -33,7 +33,7 @@ class OfficialAccount
         $server = $app->getServer();
         $response = $server->serve();
 
-        return response($response->getBody());
+        return response($response->getBody()->getContents(), $response->getStatusCode(), $response->getHeaders());
     }
 }
 ```
@@ -71,7 +71,7 @@ class OfficialAccountController
         }
 
         if (method_exists($app, 'setCache')) {
-            $app->setCache(ApplicationContext::getContainer()->get(CacheInterface::class)  //可选，根据实际需求替换缓存
+            $app->setCache(ApplicationContext::getContainer()->get(CacheInterface::class));  //可选，根据实际需求替换缓存
         }
 
         $server = $app->getServer();
