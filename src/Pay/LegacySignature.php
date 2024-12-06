@@ -39,7 +39,8 @@ class LegacySignature
                 ],
                 $params
             ),
-            static fn ($value, $key) => !($key === 'sign' || $value === '' || is_null($value))
+            static fn ($value, $key) => !($key === 'sign' || $value === '' || is_null($value)),
+            ARRAY_FILTER_USE_BOTH
         );
 
         ksort($attributes);
